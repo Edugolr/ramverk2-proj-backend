@@ -23,7 +23,7 @@ module.exports = {
         //     if (err) {
         //         return res.status(409).serverError(err);
         //     }
-        User.publish([user]);
+        User.publish([user.id]);
         return res.status(201).json(user);
     },
     'login': function(req, res) {
