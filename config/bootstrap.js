@@ -10,7 +10,7 @@
  */
 
 module.exports.bootstrap = async function() {
-
+    var stoch = require('stochastic');
     // if (!socketIOClient) {
     //     var socketIOClient = require('socket.io-client');
     //     var sailsIOClient = require('sails.io.js');
@@ -35,14 +35,20 @@ module.exports.bootstrap = async function() {
             { owner: user2.id, balance: 1001 },
         ]);
 
-
+        let sigma = 2;
+        let t=1;
+        let steps = 1;
+        let path = false;
         setInterval( async function(){
             let card = await Card.find({})
             for (var i = 0; i < card.length; i++) {
                 // console.log(cards[i]);
+
+                newPrice = stoch.brown(card[i].price, sigma, t, steps);
+                console.log(newPrice[1]);
                 var updatedCard = await Card.updateOne({ id: card[i].id})
                     .set({
-                            price: card[i].price * 1.001 + 0.4 * (Math.random() >= 0.5 ? +1 : -1)
+                            price: newPrice[1]
                 });
                 sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price: updatedCard.price});
             }
