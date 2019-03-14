@@ -35,25 +35,18 @@ module.exports.bootstrap = async function() {
             { owner: user2.id, balance: 1001 },
         ]);
 
-        // setInterval( async function(){
-        //     let cards = await Card.find({})
-        //     let updatedCard = ''
-        //     for (var i = 0; i < cards.length; i++) {
-        //         // console.log(cards[i]);
-        //         io.socket.patch('/card/'+ cards[i].id,
-        //         {
-        //             price: cards[i].price +  (Math.random() >= 0.5 ? +1 : -1)
-        //         }, function (resData, jwr) {
-        //           resData.statusCode; // => 200
-        //         });
-        //         // updatedCard = await Card.updateOne({id: cards[i].id})
-        //         // .set({price: cards[i].price +  (Math.random() >= 0.5 ? +1 : -1)})
-        //         // // sails.sockets.broadcast('feed', updatedCard);
-        //         // // console.log(updatedCard);
-        //         // sails.sockets.blast(updatedCard);
-        //     }
-        //
-        // }, 3000);
+        setInterval( async function(){
+            let card = await Card.find({})
+            for (var i = 0; i < card.length; i++) {
+                // console.log(cards[i]);
+                var updatedCard = await Card.updateOne({ id: card[i].id})
+                    .set({
+                            price: card[i].price +  (Math.random() >= 0.5 ? +1 : -1)
+                });
+                sails.sockets.broadcast('card', updatedCard);
+            }
+
+        }, 5000);
     }
 
   // By convention, this is a good place to set up fake data during development.
