@@ -46,8 +46,8 @@ module.exports.bootstrap = async function() {
                 sails.sockets.broadcast('card', updatedCard);
             }
 
-        }, 5000);
-    }
+        }, 1000);
+
 
   // By convention, this is a good place to set up fake data during development.
   //
