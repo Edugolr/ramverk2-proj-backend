@@ -45,15 +45,7 @@ module.exports = {
     owner: {
       model: 'depot'
     }
-},
-    // afterCreate: function (attr, proceed) {
-     // attribute.price = Math.floor(Math.random() * 1000) + 100;
-     // setInterval( async function(){
-     //     attr.price += (Math.random() >= 0.5 ? +1 : -1);
-     //
-     //     }, 1000);
-     //  proceed();
-  // },
+}
 
 
 };

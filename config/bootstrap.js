@@ -18,7 +18,7 @@ module.exports.bootstrap = async function() {
         // Instantiate the socket client (`io`)
         // (for now, you must explicitly pass in the socket.io client when using this library from Node.js)
         var io = sailsIOClient(socketIOClient);
-        io.sails.url = 'http://localhost:1337'
+        io.sails.url = ' 127.0.0.1:8334'
     // await User.findOne({email: 'test@email.com'}).populate('pets');
         await User.createEach([
            { email: 'test@email.com', firstname: 'Test', password: 'test' },
