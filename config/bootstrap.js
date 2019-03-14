@@ -35,6 +35,7 @@ module.exports.bootstrap = async function() {
             { owner: user2.id, balance: 1001 },
         ]);
 
+        
         setInterval( async function(){
             let card = await Card.find({})
             for (var i = 0; i < card.length; i++) {
@@ -43,7 +44,8 @@ module.exports.bootstrap = async function() {
                     .set({
                             price: card[i].price +  (Math.random() >= 0.5 ? +1 : -1)
                 });
-                sails.sockets.broadcast('updatedCard', 'card', updatedCard);
+                console.log(updatedCard);
+                sails.sockets.broadcast('updatedCard', 'card', updatedCard.price);
             }
 
         }, 1000);
