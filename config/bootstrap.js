@@ -45,7 +45,6 @@ module.exports.bootstrap = async function() {
                 // console.log(cards[i]);
 
                 newPrice = stoch.brown(card[i].price, sigma, t, steps);
-                console.log(newPrice[1]);
                 var updatedCard = await Card.updateOne({ id: card[i].id})
                     .set({
                             price: newPrice[1]
