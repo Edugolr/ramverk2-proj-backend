@@ -11,14 +11,14 @@
 
 module.exports.bootstrap = async function() {
 
-    if (!socketIOClient) {
-        var socketIOClient = require('socket.io-client');
-        var sailsIOClient = require('sails.io.js');
-
-        // Instantiate the socket client (`io`)
-        // (for now, you must explicitly pass in the socket.io client when using this library from Node.js)
-        var io = sailsIOClient(socketIOClient);
-        io.sails.url = 'https://backend.chai17.me'
+    // if (!socketIOClient) {
+    //     var socketIOClient = require('socket.io-client');
+    //     var sailsIOClient = require('sails.io.js');
+    //
+    //     // Instantiate the socket client (`io`)
+    //     // (for now, you must explicitly pass in the socket.io client when using this library from Node.js)
+    //     var io = sailsIOClient(socketIOClient);
+    //     io.sails.url = 'https://backend.chai17.me'
     // await User.findOne({email: 'test@email.com'}).populate('pets');
         await User.createEach([
            { email: 'test@email.com', firstname: 'Test', password: 'test' },
