@@ -38,7 +38,7 @@ module.exports.bootstrap = async function() {
         let sigma = 2;
         let t=1;
         let steps = 1;
-        let path = false;
+        let path = true;
         setInterval( async function(){
             let card = await Card.find({})
             for (var i = 0; i < card.length; i++) {
@@ -51,8 +51,7 @@ module.exports.bootstrap = async function() {
                 });
                 sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price: updatedCard.price});
             }
-
-        }, 2000);
+        }, 2000 );
 
 
   // By convention, this is a good place to set up fake data during development.
