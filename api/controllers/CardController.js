@@ -11,8 +11,8 @@ module.exports = {
         return res.badRequest();
       }
 
-      var roomName = req.param('roomName');
-      sails.sockets.join(req, roomName, function(err) {
+      // var roomName = req.param('roomName');
+      sails.sockets.join(req, 'updatedCard', function(err) {
         if (err) {
           return res.serverError(err);
         }
