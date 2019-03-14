@@ -11,14 +11,14 @@ module.exports = {
         return res.badRequest();
       }
 
-      // var roomName = req.param('roomName');
+
       sails.sockets.join(req, 'updatedCard', function(err) {
         if (err) {
           return res.serverError(err);
         }
 
     return res.json({
-      message: 'Subscribed to a fun room called '+roomName+'!'
+      message: 'Subscribed to a fun room called updatedCard!'
     });
   });
 },
