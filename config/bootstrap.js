@@ -44,7 +44,7 @@ module.exports.bootstrap = async function() {
                     .set({
                             price: card[i].price * 1.002 + 0.6 * (Math.random() >= 0.5 ? +1 : -1)
                 });
-                sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price:updatedCard.price});
+                sails.sockets.broadcast('updatedCard', 'card', { id: [updatedCard.id], price: [updatedCard.price]});
             }
 
         }, 2000);
