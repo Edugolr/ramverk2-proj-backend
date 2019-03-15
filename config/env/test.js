@@ -20,9 +20,8 @@
  */
 
 module.exports = {
-    adapter: 'sails-disk',
-    port: 9999,   // so we can run the app and tests at the same time
-    hostName: 'localhost:9999',
+
+    port: 9999,
     secret: 'oNACPcbd&XvE@tp0P1lxBoFMhU5aGDTbPXNeVQSB$A!XNQZ*IGNQlHMd$6AVO*ZW',
   /**************************************************************************
   *                                                                         *
@@ -49,6 +48,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+        adapter: 'sails-mongo',
+        url: 'mongodb://root@localhost/ramverk2ProjTest',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -81,6 +82,24 @@ module.exports = {
 
 
   models: {
+      attributes: {
+      createdAt: { type: 'number', autoCreatedAt: true, },
+      updatedAt: { type: 'number', autoUpdatedAt: true, },
+      // id: { type: 'number', autoIncrement: true, },
+       id: { type: 'string', columnName: '_id' },
+      //--------------------------------------------------------------------------
+      //  /\   Using MongoDB?
+      //  ||   Replace `id` above with this instead:
+      //
+      // ```
+      // id: { type: 'string', columnName: '_id' },
+      // ```
+      //
+      // Plus, don't forget to configure MongoDB as your default datastore:
+      // https://sailsjs.com/docs/tutorials/using-mongo-db
+      //--------------------------------------------------------------------------
+    },
+
 
     /***************************************************************************
     *                                                                          *
