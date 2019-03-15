@@ -39,7 +39,8 @@ module.exports.bootstrap = async function() {
         let t=1;
         let steps = 1;
         let path = true;
-        setInterval( async function(){
+        if (process.env.NODE_ENV != 'test') {
+        let stochasticPrice = setInterval( async function(){
             let card = await Card.find({})
             for (var i = 0; i < card.length; i++) {
                 // console.log(cards[i]);
@@ -52,22 +53,6 @@ module.exports.bootstrap = async function() {
                 sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price: updatedCard.price});
             }
         }, 2000 );
-
-
-  // By convention, this is a good place to set up fake data during development.
-  //
-  // For example:
-  // ```
-  // // Set up fake development data (or if we already have some, avast)
-  // if (await User.count() > 0) {
-  //   return;
-  // }
-  //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
+        }
 
 };

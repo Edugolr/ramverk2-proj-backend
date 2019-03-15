@@ -5,7 +5,7 @@ before(function(done) {
 
   // Increase the Mocha timeout so that Sails has enough time to lift, even if you have a bunch of assets.
   this.timeout(5000);
-  // process.env.NODE_ENV = 'test';
+  process.env.NODE_ENV = 'test';
   sails.lift({
     // Your sails app's configuration files will be loaded automatically,
     // but you can also specify any other special overrides here for testing purposes.
@@ -28,7 +28,6 @@ before(function(done) {
 
 // After all tests have finished...
 after(function(done) {
-
   // here you can clear fixtures, etc.
   // (e.g. you might want to destroy the records you created above)
 
