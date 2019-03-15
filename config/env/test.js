@@ -20,9 +20,9 @@
  */
 
 module.exports = {
-    adapter: 'sails-mongo',
-    url: 'mongodb://root@localhost/chai17Ramverk2ProjTest',
-    port: 9999,
+    adapter: 'sails-disk',
+    port: 9999,   // so we can run the app and tests at the same time
+    hostName: 'localhost:9999',
     secret: 'oNACPcbd&XvE@tp0P1lxBoFMhU5aGDTbPXNeVQSB$A!XNQZ*IGNQlHMd$6AVO*ZW',
   /**************************************************************************
   *                                                                         *
