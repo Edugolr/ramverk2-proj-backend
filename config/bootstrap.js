@@ -35,17 +35,18 @@ module.exports.bootstrap = async function() {
             { owner: user2.id, balance: 1001 },
         ]);
 
-        let sigma = 2;
-        let t=1;
+        let sigma = 0.1;
+        let t=0.1;
         let steps = 1;
         let path = true;
         if (process.env.NODE_ENV != 'test') {
             let stochasticPrice = setInterval( async function(){
                 let card = await Card.find({})
                 for (var i = 0; i < card.length; i++) {
-                    // console.log(cards[i]);
-
-                    newPrice = stoch.brown(card[i].price, sigma, t, steps);
+                    console.log(card[i].price);
+                    // newPrice = stoch.GBM(card[i].price, sigma, t, steps, path);
+                    newPrice = stoch.GBM(card[i].price, 0.07, 0.1, 1.0, 100, true);
+                    // newPrice = stoch.brown(card[i].price, sigma, t, steps, path);
                     var updatedCard = await Card.updateOne({ id: card[i].id})
                         .set({
                                 price: newPrice[1]
