@@ -40,19 +40,19 @@ module.exports.bootstrap = async function() {
         let steps = 1;
         let path = true;
         if (process.env.NODE_ENV != 'test') {
-        let stochasticPrice = setInterval( async function(){
-            let card = await Card.find({})
-            for (var i = 0; i < card.length; i++) {
-                // console.log(cards[i]);
+            let stochasticPrice = setInterval( async function(){
+                let card = await Card.find({})
+                for (var i = 0; i < card.length; i++) {
+                    // console.log(cards[i]);
 
-                newPrice = stoch.brown(card[i].price, sigma, t, steps);
-                var updatedCard = await Card.updateOne({ id: card[i].id})
-                    .set({
-                            price: newPrice[1]
-                });
-                sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price: updatedCard.price});
-            }
-        }, 2000 );
+                    newPrice = stoch.brown(card[i].price, sigma, t, steps);
+                    var updatedCard = await Card.updateOne({ id: card[i].id})
+                        .set({
+                                price: newPrice[1]
+                    });
+                    sails.sockets.broadcast('updatedCard', 'card', { id: updatedCard.id, price: updatedCard.price});
+                }
+            }, 2000 );
         }
 
 };

@@ -48,8 +48,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
-        adapter: 'sails-mongo',
-        url: 'mongodb://root@localhost/ramverk2ProjTest',
+        adapter: 'sails-disk',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -85,8 +84,8 @@ module.exports = {
       attributes: {
       createdAt: { type: 'number', autoCreatedAt: true, },
       updatedAt: { type: 'number', autoUpdatedAt: true, },
-      // id: { type: 'number', autoIncrement: true, },
-       id: { type: 'string', columnName: '_id' },
+      id: { type: 'number', autoIncrement: true, },
+       // id: { type: 'string', columnName: '_id' },
       //--------------------------------------------------------------------------
       //  /\   Using MongoDB?
       //  ||   Replace `id` above with this instead:
