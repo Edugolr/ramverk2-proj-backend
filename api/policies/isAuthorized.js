@@ -11,8 +11,10 @@ module.exports = function(req, res, next) {
 			if(/^Bearer$/i.test(scheme)) {
 				token = credentials;
 			}
+		} else {
 			return res.status(401).json( {err: 'Format is Authorization: Bearer [token]'});
 		}
+	} else {
 		//authorization header is not present
 		return res.status(401).json( {err: 'No Authorization header was found'});
 	}
