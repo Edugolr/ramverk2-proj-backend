@@ -9,11 +9,11 @@
  */
 
 module.exports.policies = {
-    // '*': 'isAuthorized',
+    '*': 'isAuthorized',
     UserController: {
         // By default, require requests to come from a logged-in user
         // (runs the policy in api/policies/isLoggedIn.js)
-        // '*': 'isAuthorized',
+        '*': 'isAuthorized',
 
         // Only allow admin users to delete other users
         // (runs the policy in api/policies/isAdmin.js)

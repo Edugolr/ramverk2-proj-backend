@@ -2,6 +2,22 @@
 
 a [Sails v1](https://sailsjs.com) application
 
+## Techs
+* Sails.js
+* jsonwebtoken
+
+Gör ett medvetet val av teknik och berätta utförligt i din README om vilka teknikval du har gjort och varför.
+
+## Real-time
+
+Sails.js has its own built in sails.io which I choose to use for the application.
+It should work out of box on every api model. I however had some problems with broadcasting on update/patch which I dont fully understand. I choose to make a custom route /subsribe to handle it and write my own solution.
+Basicly it checks if the call on the route is a socket then joins it to the room I broadcast the price update to.
+The room is called updatedCard.
+The socket .emit or as sails calls it .broadcast is started in the bootstrap.js file. It runs in a setInterval function and broadcasts to the channel every 2 sec.
+
+I had alot of problems here getting the patch on the Card model to actually emit something to the frontend when I gave up on the built in solution and tried it my own way it went well tough.
+
 
 ## Badges
 [![Build Status](https://travis-ci.org/Edugolr/ramverk2-proj-backend.svg?branch=master)](https://travis-ci.org/Edugolr/ramverk2-proj-backend)
@@ -16,11 +32,14 @@ baseUrl/backend-trading/coverage
 
 ## CI
 I have used Travis codeclimate and coveralls.
-Travis for :
-Codeclimate for :
-Coveralls for :
+Travis for : building and testing the application
+Codeclimate for : showing the codequality
+Coveralls for : Showing the codecoverage
 
-I din README skriver du ett stycke om CI-kedjan, vilka tjänster du valt och varför samt eventuella begränsningar i hur CI-kedjan kan hantera din applikation. Du gör en kort reflektion över din syn på den hjälpen liknande verktyg ger dig.
+Id say Im very pleased with my results, however the Codeclimate did react to alot of Sails code so I choose to ignore them and take away them from the result since I dont have knowledge enough to change the base code of Sails.js
+I really enjoy travis where I can check how my build works on different environments, like on my build which uses different node versions.
+I like Codeclimate cause it can help me find smelly code, to many reapeats to big annd chunky or maybe repeating the same code many times, Codeclimate spots this for me.
+Coveralls give me a quick look on the codecoverage ( I do prefer the local html version from Istanbul tough).
 
 ## Test suite
 ### Tools
