@@ -24,9 +24,10 @@ module.exports.policies = {
         'register': true,
         'list': true
     },
-    Depot: {
+    CardController: {
+        'subscribe': true,
+    }
 
-    },
 
   /***************************************************************************
   *                                                                          *

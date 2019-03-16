@@ -1,11 +1,7 @@
 module.exports = function(req, res, next) {
 	var token;
 	//Check if authorization header is present
-	if(req.isSocket) {
-      if(req.socket.handshake && req.socket.handshake.query && req.socket.handshake.query.token) {
-          token = req.socket.handshake.query.token;
-      }
-	else if (req.headers && req.headers.authorization) {
+ 	if (req.headers && req.headers.authorization) {
 		//authorization header is present
 		var parts = req.headers.authorization.split(' ');
 		if(parts.length == 2) {
