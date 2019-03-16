@@ -29,7 +29,7 @@ I had alot of problems here getting the patch on the Card model to actually emit
 [![Coverage Status](https://coveralls.io/repos/github/Edugolr/chai17Ramverk2/badge.svg?branch=master)](https://coveralls.io/github/Edugolr/chai17Ramverk2?branch=master)
 
 ## Test results
-You can get a text overview of the results on [![/coverage](/coverage)
+You can get a text overview of the results on baseUrl/coverage
 If you want to view the full report open it on your local server on the path
 baseUrl/backend-trading/coverage
 

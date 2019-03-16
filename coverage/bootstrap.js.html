@@ -105,7 +105,10 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,17 +134,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -150,7 +156,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,6 +195,7 @@ module.exports.bootstrap = <span class="fstat-no" title="function not covered" >
 <span class="cstat-no" title="statement not covered" >        await User.createEach([</span>
            { email: 'test@email.com', firstname: 'Test', password: 'test' },
            { email: 'test2@email.com', firstname: 'Test2', password: 'test'},
+           { email: 'nomoney@email.com', firstname: 'NoMoney', password: 'test'},
          ]);
 <span class="cstat-no" title="statement not covered" >        await Card.create({ player: 'Jake Allen', playerId: 8474596,  serie: 'UD Black', serieCode: '25', code: '6KCZC', team: 'Blues', teamId: 19, season: 2016, print: 299, printNumber: 182, price: 100 })</span>
 <span class="cstat-no" title="statement not covered" >        await Card.create({ player: 'Tage Thompson', playerId: 8479420, serie: 'UD Exquisite collection', serieCode: 'R-TT', code: 'B928X', team: 'Blues', teamId: 19, season: 2017, print: 299, printNumber: 132, price: 100})</span>
@@ -196,9 +203,11 @@ module.exports.bootstrap = <span class="fstat-no" title="function not covered" >
 &nbsp;
         let user = <span class="cstat-no" title="statement not covered" >await User.findOne({email: 'test@email.com'});</span>
         let user2 = <span class="cstat-no" title="statement not covered" >await User.findOne({email: 'test2@email.com'});</span>
+        let user3 = <span class="cstat-no" title="statement not covered" >await User.findOne({email: 'nomoney@email.com'});</span>
 <span class="cstat-no" title="statement not covered" >        await Depot.createEach([</span>
             { owner: user.id, balance: 1000 },
             { owner: user2.id, balance: 1001 },
+            { owner: user3.id, balance: 0 },
         ]);
 &nbsp;
         let sigma = <span class="cstat-no" title="statement not covered" >0.1;</span>
@@ -209,9 +218,9 @@ module.exports.bootstrap = <span class="fstat-no" title="function not covered" >
             let stochasticPrice = <span class="cstat-no" title="statement not covered" >setInterval( <span class="fstat-no" title="function not covered" >as</span>ync function(){</span>
                 let card = <span class="cstat-no" title="statement not covered" >await Card.find({})</span>
 <span class="cstat-no" title="statement not covered" >                for (var i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; card.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >                    console.log(card[i].price);</span>
+                    // console.log(card[i].price);
                     // newPrice = stoch.GBM(card[i].price, sigma, t, steps, path);
-<span class="cstat-no" title="statement not covered" >                    newPrice = stoch.GBM(card[i].price, -0.1, 0.1, 1.0, 100, true);</span>
+<span class="cstat-no" title="statement not covered" >                    newPrice = stoch.GBM(card[i].price, 0.005, 0.1, 1.0, 100, true);</span>
                     // newPrice = stoch.brown(card[i].price, sigma, t, steps, path);
                     var updatedCard = <span class="cstat-no" title="statement not covered" >await Card.updateOne({ id: card[i].id})</span>
                         .set({
@@ -229,7 +238,7 @@ module.exports.bootstrap = <span class="fstat-no" title="function not covered" >
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Mar 15 2019 18:28:44 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Mar 16 2019 22:12:04 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="prettify.js"></script>
