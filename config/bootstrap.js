@@ -23,6 +23,7 @@ module.exports.bootstrap = async function() {
         await User.createEach([
            { email: 'test@email.com', firstname: 'Test', password: 'test' },
            { email: 'test2@email.com', firstname: 'Test2', password: 'test'},
+           { email: 'nomoney@email.com', firstname: 'NoMoney', password: 'test'},
          ]);
         await Card.create({ player: 'Jake Allen', playerId: 8474596,  serie: 'UD Black', serieCode: '25', code: '6KCZC', team: 'Blues', teamId: 19, season: 2016, print: 299, printNumber: 182, price: 100 })
         await Card.create({ player: 'Tage Thompson', playerId: 8479420, serie: 'UD Exquisite collection', serieCode: 'R-TT', code: 'B928X', team: 'Blues', teamId: 19, season: 2017, print: 299, printNumber: 132, price: 100})
@@ -30,9 +31,11 @@ module.exports.bootstrap = async function() {
 
         let user = await User.findOne({email: 'test@email.com'});
         let user2 = await User.findOne({email: 'test2@email.com'});
+        let user3 = await User.findOne({email: 'nomoney@email.com'});
         await Depot.createEach([
             { owner: user.id, balance: 1000 },
             { owner: user2.id, balance: 1001 },
+            { owner: user3.id, balance: 0 },
         ]);
 
         let sigma = 0.1;

@@ -1,7 +1,5 @@
 // ./test/integration/models/Card.test.js
 
-var util = require('util');
-
 describe('Card (model)', function() {
 
     describe('#attribute player type()', function() {

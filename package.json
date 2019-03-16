@@ -43,9 +43,6 @@
   "license": "",
   "engines": {
     "node": "^10.15"
-},
-"nyc": {
-    "report-dir": "./views/"
-  }
+}
 
 }
