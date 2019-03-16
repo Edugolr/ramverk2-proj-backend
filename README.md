@@ -26,7 +26,7 @@ I had alot of problems here getting the patch on the Card model to actually emit
 ## Badges
 [![Build Status](https://travis-ci.org/Edugolr/ramverk2-proj-backend.svg?branch=master)](https://travis-ci.org/Edugolr/ramverk2-proj-backend)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b36570f7afc13fa15cee/maintainability)](https://codeclimate.com/github/Edugolr/chai17Ramverk2/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/Edugolr/chai17Ramverk2/badge.svg?branch=master)](https://coveralls.io/github/Edugolr/chai17Ramverk2?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Edugolr/ramverk2-proj-backend/badge.svg?branch=master)](https://coveralls.io/github/Edugolr/ramverk2-proj-backend?branch=master)
 
 ## Test results
 You can get a text overview of the results on baseUrl/coverage
