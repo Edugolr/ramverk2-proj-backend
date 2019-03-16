@@ -24,10 +24,10 @@ module.exports = {
 },
     'buy': async function(req, res) {
          //console.log(req.user);
-        let userId= req.param('userId');
+        let userEmail= req.param('userEmail');
         let cardName = req.param('name');
 
-        let user = await User.findOne({id: userId});
+        let user = await User.findOne({email: userEmail});
         let card = await Card.findOne({player: cardName});
 
         if (card.owner) {
@@ -49,16 +49,16 @@ module.exports = {
         return res.json(updatedDepot);
      },
      'sell': async function(req, res) {
-         let userId= req.param('userId');
+         let userEmail= req.param('userEmail');
          let cardName = req.param('name');
 
-         let user = await User.findOne({id: userId});
+         let user = await User.findOne({email: userEmail});
          let card = await Card.findOne({player: cardName});
          let depot = await Depot.findOne({owner: user.id});
 
 
          let newBalance = depot.balance + card.price;
-         var updatedUser = await Depot.updateOne({ owner: user.id })
+         var updatedUser = await Depot.updateOne({owner: user.id})
             .set({
                 balance: newBalance
             });
@@ -66,9 +66,9 @@ module.exports = {
          depotCards = await Depot.find(depot.id).populate('cards');
          return res.json(depotCards);
       },
-      'notowned': async function(req, res) {
-          let cards = await Card.find({owner: null});
+  'notowned': async function(req, res) {
+      let cards = await Card.find({owner: null});
 
-          return res.json(cards)
-      }
+      return res.json(cards)
+  }
 };

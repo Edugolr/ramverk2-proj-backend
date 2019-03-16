@@ -21,6 +21,9 @@ module.exports.routes = {
 
 
 
+'/coverage': function(req, res, next) {
+    res.sendFile(sails.config.appPath + '/coverage/index.html');
+},
 
   /***************************************************************************
   *                                                                          *

@@ -43,9 +43,9 @@ module.exports.bootstrap = async function() {
             let stochasticPrice = setInterval( async function(){
                 let card = await Card.find({})
                 for (var i = 0; i < card.length; i++) {
-                
+                    // console.log(card[i].price);
                     // newPrice = stoch.GBM(card[i].price, sigma, t, steps, path);
-                    newPrice = stoch.GBM(card[i].price, 0.07, 0.1, 1.0, 100, true);
+                    newPrice = stoch.GBM(card[i].price, -0.1, 0.1, 1.0, 100, true);
                     // newPrice = stoch.brown(card[i].price, sigma, t, steps, path);
                     var updatedCard = await Card.updateOne({ id: card[i].id})
                         .set({

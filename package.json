@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3",
+    "coveralls": "^3.0.3",
     "mocha": "^6.0.2",
     "nyc": "^13.3.0",
     "supertest": "^4.0.0"
@@ -30,7 +31,8 @@
     "start": "NODE_ENV=production node app.js",
     "test": " nyc --reporter=html --reporter=text _mocha test/lifecycle.test.js test/integration/**/*.test.js",
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "main": "app.js",
   "repository": {
@@ -41,5 +43,9 @@
   "license": "",
   "engines": {
     "node": "^10.15"
+},
+"nyc": {
+    "report-dir": "./views/"
   }
+
 }
