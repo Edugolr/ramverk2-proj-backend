@@ -3,10 +3,14 @@
 a [Sails v1](https://sailsjs.com) application
 
 ## Techs
-* Sails.js
-* jsonwebtoken
+* Sails.js: framework
+* jsonwebtoken: authorization
 
-Gör ett medvetet val av teknik och berätta utförligt i din README om vilka teknikval du har gjort och varför.
+Sails.js comes packaged with RESTApi on all models, enabling websocket subscribing just by hitting the  /get on the model. This sounded very promising as a backend for my real-time project. Im somewhat familiar with Sails since before, and altough it hasnt been without some struggle to understand it, I really enjoy the quick setup of the RESTApi.
+I will go through more about Sails.js in the [Why-Sails document](https://github.com/Edugolr/why-sails)
+
+jsonwebtoken or JWT is the authorization we have worked with throughout the course and that is the reason I choose it as authorization method. It is implemented through the api policies in the file isAuthorized.js where it checks if the incoming request sends a auth.header and if the token is valid. The  routes to secure are handled in config/policies.js.
+
 
 ## Real-time
 
