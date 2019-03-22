@@ -33,7 +33,7 @@ module.exports.datastores = {
   ***************************************************************************/
 
   default: {
-      adapter: 'sails-mongo',
+     adapter: 'sails-mongo',
      url: 'mongodb://root@localhost/chai17Ramverk2Proj'
     /***************************************************************************
     *                                                                          *

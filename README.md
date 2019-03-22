@@ -56,5 +56,10 @@ Overall the testing is simple, however I didnt get a grasp on how to test the sa
 
 Both mocha and supertest have worked out well for the testing.
 The Istanbul doesnt support output in .ejs format and Sails.js doesnt support .html as a view format. I have put out a raw text route to view the test coverage (note that no links work in it so you can only look at the overview)
-You can get a text overview of the results on [![/coverage](/coverage). Otherwise you can use your local server ex: Apache to view the result on the path
+You can get a text overview of the results on /coverage. Otherwise you can use your local server ex: Apache to view the result on the path
 baseUrl/backend-trading/coverage
+
+## Why-sails
+I found my time ith sails to be very much. At first very much frustrating and then later on very much enjoyable.
+Below is a link on an article where I give you good reasons to follow my path and some reasons not to.
+[Why-sails](https://github.com/Edugolr/why-sails)
